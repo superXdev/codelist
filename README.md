@@ -5,7 +5,7 @@ Iam following some course about django from youtube
 
 ![Preview](https://raw.githubusercontent.com/superXdev/superxdev.github.io/main/assets/images/project3.png)
 
-## Installation
+## Setup
 1. Clone github repo
 ```
 git clone https://github.com/superXdev/codelist.git
