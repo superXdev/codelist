@@ -1,15 +1,21 @@
 from django.shortcuts import render
+from django.urls import reverse
 
 import requests
 from requests.compat import quote_plus 
 from bs4 import BeautifulSoup
 from . import models
 
+
+
 CRAIGLIST_URL = 'https://newyork.craigslist.org/search/{}?query={}&sort={}&lang=en&cc=gb'
 IMAGE_URL = 'https://images.craigslist.org/{}_300x300.jpg'
 
 def home(request):
 	return render(request, 'base.html')
+
+def about(request):
+	return render(request, 'app/about.html')
 
 def new_search(request):
 	# get keyword search

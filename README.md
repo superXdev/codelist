@@ -3,6 +3,8 @@
 CodeList is a Craigslist scrapper web, this is my first django project.
 Iam following some course about django from youtube
 
+![Preview](https://raw.githubusercontent.com/superXdev/superxdev.github.io/main/assets/images/project3.png)
+
 ## Installation
 1. Clone github repo
 ```

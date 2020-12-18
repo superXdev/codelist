@@ -1,0 +1,53 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About</title>
+	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<nav>
+	<div class="nav-wrapper">
+	  <a href="#!" class="brand-logo">CodeList</a>
+	  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	  <ul class="right hide-on-med-and-down">
+	    <li><a href="/">Home</a></li>
+		<li><a href="{% url 'app:about' %}">About</a></li>
+	  </ul>
+	</div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+	<li><a href="/">Home</a></li>
+	<li><a href="{% url 'app:about' %}">About</a></li>
+</ul>
+	<div class="container">
+		<div class="row">
+			<div class="card large">
+				<div class="card-content">
+					<div class="card-title">
+						About
+					</div>
+					
+					<p>
+						Author: Fikri Rudiansyah
+					</p>
+					<p>
+						Github: <a href="https://github.com/superXdev/codelist">https://github.com/superXdev/codelist</a>
+					</p>
+					<p>
+						Web: <a href="https://fikridev.tech/">https://fikridev.tech</a>
+					</p>
+					<div style="margin-top: 10px">
+						<p>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Perferendis quod aut expedita magni quibusdam facilis corrupti consequuntur modi ducimus aperiam exercitationem repellendus, voluptatem adipisci nostrum nemo veritatis at. Ratione quidem eaque facilis necessitatibus odio similique dolorum numquam, tempora nesciunt magni?</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
