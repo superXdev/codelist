@@ -5,7 +5,7 @@ from requests.compat import quote_plus
 from bs4 import BeautifulSoup
 from . import models
 
-CRAIGLIST_URL = 'https://hongkong.craigslist.org/search/sss?query={}&sort=rel'
+CRAIGLIST_URL = 'https://newyork.craigslist.org/search/{}?query={}&sort={}&lang=en&cc=gb'
 IMAGE_URL = 'https://images.craigslist.org/{}_300x300.jpg'
 
 def home(request):
@@ -14,8 +14,11 @@ def home(request):
 def new_search(request):
 	# get keyword search
 	search = request.POST.get('search')
+	# another option
+	category = request.POST.get('category')
+	sort = request.POST.get('filter')
 	# getting the webpage
-	url = CRAIGLIST_URL.format(quote_plus(search))
+	url = CRAIGLIST_URL.format(category, quote_plus(search), sort)
 	response = requests.get(url)
 	# passing the source code
 	soup = BeautifulSoup(response.text, features='html.parser')
@@ -24,20 +27,23 @@ def new_search(request):
 
 	result_posts = []
 	for post in post_lists:
-		title = post.find(class_='result-title').text
-		url = post.find('a').get('href')
-		price = 'N/A'
-		image_url = 'https://stickershop.line-scdn.net/stickershop/v1/product/1000415/LINEStorePC/main.png;compress=true'
+		try:
+			title = post.find(class_='result-title').text
+			url = post.find('a').get('href')
+			price = 'N/A'
+			image_url = 'https://stickershop.line-scdn.net/stickershop/v1/product/1000415/LINEStorePC/main.png;compress=true'
 
-		if post.find(class_='result-price'):
-			price = post.find(class_='result-price').text
+			if post.find(class_='result-price'):
+				price = post.find(class_='result-price').text
 
-		if post.find(class_='result-image'):
-			ids = post.find(class_='result-image').get('data-ids')
-			image_url = ids.split(",")[0].split(":")[1]
-			image_url = IMAGE_URL.format(image_url)
+			if post.find(class_='result-image'):
+				ids = post.find(class_='result-image').get('data-ids')
+				image_url = ids.split(",")[0].split(":")[1]
+				image_url = IMAGE_URL.format(image_url)
 
-		result_posts.append((title, url, price, image_url))
+			result_posts.append((title, url, price, image_url))
+		except:
+			print('Error')
 
 	data = {
 		'search': search,

@@ -13,17 +13,22 @@
 <body>
 <nav>
 	<div class="nav-wrapper">
-		<a href="/" class="brand-logo">CodeList</a>
-		<ul class="right">
-			<li><a href="/">Home</a></li>
-			<li><a href="/">About</a></li>
-		</ul>
+	  <a href="#!" class="brand-logo">Logo</a>
+	  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	  <ul class="right hide-on-med-and-down">
+	    <li><a href="/">Home</a></li>
+		<li><a href="/">About</a></li>
+	  </ul>
 	</div>
 </nav>
+<ul class="sidenav" id="mobile-demo">
+	<li><a href="/">Home</a></li>
+	<li><a href="/">About</a></li>
+ </ul>
 
 {# just a home text #}
 <div class="container">
-	<h3 class="center">Search on Codedaddies List</h3>
+	<h3 class="center">Search on craigslist</h3>
 
 	<div class="row">
 		<div class="col s4 center">
@@ -45,7 +50,71 @@
 	<div class="center">
 		<form action="{% url 'new_search' %}" method="post">
 			{% csrf_token %}
-			<input type="text" placeholder="Search" name="search" autocomplete="off">
+			<div class="row">
+				<div class="col s12">
+					<input type="text" placeholder="Search something.." name="search" autocomplete="off">
+				</div>
+
+				<div class="input-field col s6">
+				    <select name="category">
+				      <option value="sss" selected>all</option>
+	                    <option value="ata">antiques</option>
+	                    <option value="ppa">appliances</option>
+	                    <option value="ara">arts+crafts</option>
+	                    <option value="sna">atvs/utvs/snow</option>
+	                    <option value="pta">auto parts</option>
+	                    <option value="wta">auto wheels &amp; tyres</option>
+	                    <option value="ava">aviation</option>
+	                    <option value="baa">baby+kid</option>
+	                    <option value="bar">barter</option>
+	                    <option value="haa">beauty+hlth</option>
+	                    <option value="bip">bike parts</option>
+	                    <option value="bia">bikes</option>
+	                    <option value="bpa">boat parts</option>
+	                    <option value="boo">boats</option>
+	                    <option value="bka">books</option>
+	                    <option value="bfa">business</option>
+	                    <option value="cta">cars+vans</option>
+	                    <option value="ema">cds/dvd/vhs</option>
+	                    <option value="cla">clothes+acc</option>
+	                    <option value="cba">collectibles</option>
+	                    <option value="syp">computer parts</option>
+	                    <option value="sya">computers</option>
+	                    <option value="ela">electronics</option>
+	                    <option value="gra">farm+garden</option>
+	                    <option value="zip">free stuff</option>
+	                    <option value="fua">furniture</option>
+	                    <option value="gms">garage sales</option>
+	                    <option value="foa">general</option>
+	                    <option value="hva">heavy equipment</option>
+	                    <option value="hsa">household</option>
+	                    <option value="jwa">jewellery</option>
+	                    <option value="maa">materials</option>
+	                    <option value="moa">mobile phones</option>
+	                    <option value="rva">motor homes/campers</option>
+	                    <option value="mpa">motorcycle parts</option>
+	                    <option value="mca">motorcycles</option>
+	                    <option value="msa">music instr</option>
+	                    <option value="pha">photo+video</option>
+	                    <option value="sga">sporting</option>
+	                    <option value="tia">tickets</option>
+	                    <option value="tla">tools</option>
+	                    <option value="taa">toys+games</option>
+	                    <option value="tra">trailers</option>
+	                    <option value="vga">video gaming</option>
+	                    <option value="waa">wanted</option>
+				    </select>
+				    <label>Select category</label>
+			  </div>
+			  <div class=" input-field col s6">
+			  	<select name="filter">
+			  		<option value="date">Newest</option>
+			  		<option value="rel">Most relevant</option>
+			  	</select>
+			  	<label>Sort by</label>
+			  </div>
+			</div>
+			
 			<button type="submit" class="btn waves-effect waves-light">Submit</button>
 		</form>
 	</div>
@@ -58,5 +127,17 @@
 
 
 <script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('select');
+	    var instances = M.FormSelect.init(elems);
+	});
+
+	document.addEventListener('DOMContentLoaded', function() {
+	   var elems = document.querySelectorAll('.sidenav');
+	   var instances = M.Sidenav.init(elems);
+	});
+</script>
 </body>
 </html>
