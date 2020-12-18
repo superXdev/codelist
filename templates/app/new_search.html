@@ -8,18 +8,21 @@
 	<h5 class="center">{{ search | title }}</h5>
 
 	<div class="row">
+		{% for post in posts %}
 		<div class="col s4">
 			<div class="card medium">
 				<div class="card-image">
-					<img src="{% static 'images/photo.jpg' %}" class="responsive-img">
+					<img src="{{ post.3 }}" class="responsive-img">
 				</div>
 				<div class="card-content">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quam!</p>
+					<h6>{{ post.0 }}</h6>
+					<p class="green-text text-darken-1">{{ post.2 }}</p>
 				</div>
 				<div class="card-action">
-					<a href="">{{ search.1 }}</a>
+					<a href="{{ post.1 }}">view</a>
 				</div>
 			</div>
 		</div>
+		{% endfor %}
 	</div>
 {% endblock %}
